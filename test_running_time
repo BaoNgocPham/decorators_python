@@ -1,0 +1,18 @@
+#To test how long does it takes to run our code
+
+from time import time
+def performance(fn):
+    def wrapper(*args, **kwargs):
+        t1 = time() #check what time now
+        result = fn(*args, **kwargs)
+        t2 = time() #check time when done
+        print(f'took {t2-t1} s')
+        return result
+    return wrapper
+
+@performance #use decorator to test function below
+def long_time():
+    for i in range(10000000):
+        i*5
+
+long_time()
